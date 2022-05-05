@@ -51,7 +51,7 @@ First we generate the overview page that links to the specific subpages
 overview_template = open_template("templates/multilingual.html")
 
 # We construct a HTML fragment with a series of links in list elements
-html_fragment = "".join(["<li><a href='https://stenos.io/%s.html'>%s</a></li>" % (x.lower(), x) for x in lang_variation_dict.keys()])
+html_fragment = "".join(["<li><a href='https://example.com/%s.html'>%s</a></li>" % (x.lower(), x) for x in lang_variation_dict.keys()])
 
 # We construct a dict of replacements
 # And we generate the overview page by replacing the bits in the template
@@ -101,9 +101,9 @@ sitemap_template = open_template("templates/sitemap.xml")
 pages_fragment = ""
 for x in lang_variation_dict.keys():
     pages_fragment += """<url>
-        <loc>https://stenos.io/{0}.html</loc>
+        <loc>https://example.com/{0}.html</loc>
         <lastmod>2022-05-05</lastmod>
-        <xhtml:link rel='alternate' hreflang='en' href='https://stenos.io/{0}.html'/>
+        <xhtml:link rel='alternate' hreflang='en' href='https://example.com/{0}.html'/>
     </url>""".format(x.lower())
 
 # We construct a dict of replacements
@@ -111,6 +111,11 @@ for x in lang_variation_dict.keys():
 replacement_dict = {"{pages}":pages_fragment}   
 sitemap = insert_values_into_html_template(sitemap_template, replacement_dict)
 write_page("output/sitemap.xml", sitemap)
+```
+
+
+```python
+
 ```
 
 
